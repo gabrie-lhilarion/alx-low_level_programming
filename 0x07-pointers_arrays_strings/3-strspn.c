@@ -2,30 +2,33 @@
 #include <stdio.h>
 
 /**
- * _strpbrk - Search for a string of any set of bytes.
- * @s: type char pointer
- * @accept: type char pointer
- * Return: s or null if no such byte type is found.
+ * _strspn - gets the lenght of a prefix substring.
+ * @s: type char returns the number of bytes
+ * @accept: bytes from accept
+ * Return: return x
  */
-char *_strpbrk(char *s, char *accept)
+
+unsigned int _strspn(char *s, char *accept)
 {
-	int x, y;
-	char *p;
+	unsigned int str;
+	int x, y, z;
 
 	x = 0;
 	while (s[x] != '\0')
 	{
-		y = 0;
-		while (accept[y] != '\0')
+		z = 0;
+		for (y = 0; accept[y] != '\0'; y++)
 		{
-			if (accept[y] == s[x])
+			if (s[x] == accept[y])
 			{
-				p = &s[x];
-				return (p);
+				z = 1;
 			}
-			y++;
 		}
+		y = 0;
+		if (z == 0)
+			break;
+		str++;
 		x++;
 	}
-	return (NULL);
+	return (x);
 }
