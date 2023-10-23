@@ -10,7 +10,7 @@
  * head node, and prints each integer element. It counts the number of nodes
  * (elements) in the list and returns that count.
  *
- * @num_nodes: The number of nodes (elements) in the linked list.
+ * Return: The number of nodes (elements) in the linked list.
  */
 
 size_t print_listint(const listint_t *h)
@@ -28,6 +28,6 @@ size_t print_listint(const listint_t *h)
 
 		num_nodes++;
 	}
-	
+
 	return (num_nodes);
 }
