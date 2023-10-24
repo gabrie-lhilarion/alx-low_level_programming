@@ -4,7 +4,7 @@
 #include "lists.h"
 
 /**
- * free_listint2 - Prints the elements of a linked list of integers.
+ * free_listint2 - Free a list.
  *
  * @head: A pointer to the head of the linked list.
  *
@@ -17,6 +17,9 @@ void free_listint2(listint_t **head)
 {
 	listint_t *current = *head;
 	listint_t *next;
+
+	if (head == NULL)
+		return;
 
 	while (current != NULL)
 	{
