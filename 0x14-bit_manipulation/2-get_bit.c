@@ -10,17 +10,17 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-    unsigned int maxIndex = sizeof(unsigned long int) * 8 - 1;
-    unsigned long int mask;
-    int bitValue;
+	unsigned int maxIndex = sizeof(unsigned long int) * 8 - 1;
+	unsigned long int mask;
+	int bitValue;
 
-    if (index > maxIndex)
-    {
-        return (-1);
-    }
+	if (index > maxIndex)
+	{
+		return (-1);
+	}
 
-    mask = 1UL << index;
-    bitValue = (n & mask) ? 1 : 0;
+	mask = 1UL << index;
+	bitValue = (n & mask) ? 1 : 0;
 
-    return (bitValue);
+	return (bitValue);
 }
