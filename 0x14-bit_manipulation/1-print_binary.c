@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * print_binary - converts a decimal number to binary and prints the binary.
@@ -11,19 +12,27 @@
 void print_binary(unsigned long int n)
 {
 
-	unsigned long int mask = 1UL << (sizeof(unsigned long int) * 8 - 1);
-	int bit_count = sizeof(unsigned long int) * 8;
+	int num_bits = sizeof(unsigned long int) * 8;
+	int bit_set = 0;
+	int i;
 
-	while (bit_count > 0)
+	for (i = num_bits - 1; i >= 0; i--)
 	{
+		unsigned long int mask = 1UL << i;
 
 		if (n & mask)
+		{
 			_putchar('1');
-		else
+			bit_set = 1;
+		}
+		else if (bit_set)
+		{
 			_putchar('0');
+		}
+	}
 
-		mask >>= 1;
-
-		bit_count--;
+	if (n == 0)
+	{
+		_putchar('0');
 	}
 }
