@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 	const char *file_from = argv[1];
 	const char *file_to = argv[2];
 	int fd_src = open(file_from, O_RDONLY);
-	int fd_dest = open(file_to,O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR|S_IRGRP);
+	int fd_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
 	if (argc != 3)
 		error(97, "Usage: cp file_from file_to\n");
