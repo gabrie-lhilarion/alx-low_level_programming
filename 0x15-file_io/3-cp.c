@@ -43,10 +43,15 @@ int main(int argc, char *argv[])
 {
 	char buffer[BUF_SIZE];
 	ssize_t bytes_read, bytes_written;
+	int fd_src;
+	int fd_dest;
+
 	const char *file_from = argv[1];
 	const char *file_to = argv[2];
-	int fd_src = open(file_from, O_RDONLY);
-	int fd_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+	fd_src = open(file_from, O_RDONLY);
+	umask(0);
+	fd_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 
 	if (argc != 3)
 		error(97, "Usage: cp file_from file_to\n");
