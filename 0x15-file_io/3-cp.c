@@ -23,7 +23,7 @@ void error(int exit_code, const char *fmt, ...)
 	va_list args;
 
 	va_start(args, fmt);
-	dprintf(2, fmt, args);
+	dprintf(STDERR_FILENO, fmt, args);
 	va_end(args);
 
 	exit(exit_code);
