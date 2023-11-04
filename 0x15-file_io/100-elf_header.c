@@ -4,7 +4,9 @@
 #include <fcntl.h>
 #include <stdint.h>
 #include <string.h>
+#include "main.h"
 
+#define ELF_MAGIC_SIZE 4
 #define ELF_HEADER_SIZE 52
 
 /**
@@ -29,6 +31,8 @@ void error(const char *msg)
 
 void read_elf_header(const char *filename)
 {
+	ElfHeader header;
+
 	int fd = open(filename, O_RDONLY);
 
 	if (fd == -1)
@@ -36,7 +40,6 @@ void read_elf_header(const char *filename)
 		error("Error: Cannot open file");
 	}
 
-	ElfHeader header;
 
 	if (read(fd, &header, ELF_HEADER_SIZE) != ELF_HEADER_SIZE)
 	{
@@ -61,3 +64,14 @@ void read_elf_header(const char *filename)
 	close(fd);
 }
 
+
+int main(int argc, char *argv[]) {
+	const char *filename = argv[1];
+
+	if (argc != 2) {
+		error("Usage: elf_header elf_filename");
+	}
+
+	read_elf_header(filename);
+	return 0;
+}
